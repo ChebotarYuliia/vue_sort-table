@@ -4,8 +4,8 @@
      <div v-if="!tableResponse" class="lds-circle">
       <div></div>
       </div>
-    <Table v-else v-bind:table="tableDataResponse"></Table>
-     <Pagination v-bind:table="tableDataResponse" v-on:change-page="changePage"></Pagination>
+    <Table v-else v-bind:tableData="tableDataPage" v-on:to-sort-table="sortTableData"></Table>
+    <Pagination v-bind:tableData="tableDataResponse" v-on:change-page="changePage"></Pagination>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
     return {
       tableDataResponse: [],
       tableResponse: false,
+      tableDataPage: []
     };
   },
   created() {
@@ -47,8 +48,11 @@ export default {
         "There has been a problem with your fetch operation: " + error.message;
       });
     },
-    changePage(page){
-      
+    changePage(pages){
+      this.tableDataPage = pages;
+    },
+    sortTableData(title) {
+      return title;
     }
   }
 };

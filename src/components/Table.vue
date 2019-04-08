@@ -3,15 +3,13 @@
     <table class="ui basic table">
       <thead>
         <tr>
-          <td>Id</td>
-          <td>Product name</td>
-          <td>Price</td>
-          <td>Color</td>
-          <td>Department</td>
+        <td v-for="title in tableTitles" @click="sortTable(title)" v-bind:key="title">
+          {{title}}
+        </td>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in table" v-bind:key="item.id">
+        <tr v-for="item in tableData" v-bind:key="item.id">
           <td>{{item.id}}</td>
           <td>{{item.title}}</td>
           <td>{{item.price}}</td>
@@ -28,7 +26,17 @@
 
 export default {
   name: "Table",
-  props: ["table"],
+  props: ["tableData"],
+  data(){
+   return{
+      tableTitles: ['id', 'product name', 'price', 'color', 'department']
+   }
+  },
+  methods: {
+    sortTable: function(title) {
+      this.$emit("to-sort-table", title);
+    }
+  },
 };
 </script>
 
@@ -38,5 +46,10 @@ export default {
 .table {
   width: 600px;
   margin: 0 auto;
+}
+.table thead td{
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
