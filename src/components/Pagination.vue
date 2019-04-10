@@ -1,10 +1,10 @@
 <template>
   <div class="pagination">
-   <!--<a v-for="n in pagesQuontity" v-bind:key="n" data-page="n" v-on:click="changePage(n)"> {{n}}</a> -->
+   <!--<a v-for="n in pagesQuontity" :key="n" data-page="n" @click="changePage(n)"> {{n}}</a> -->
      <div class="ui large buttons">
-      <button class="ui button" @click="prevPage" :disabled="pageNumber==0">Previous</button>
+      <button class="ui button" @click="prevPage()" :disabled="pageNumber==0">Previous</button>
       <div class="or"></div>
-      <button class="ui button" @click="nextPage" :disabled="pageNumber >= pageCount -1">Next</button>
+      <button class="ui button" @click="nextPage()" :disabled="pageNumber >= pageCount -1">Next</button>
     </div>
   </div>
 </template>

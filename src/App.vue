@@ -17,7 +17,7 @@
 import Table from "./components/Table.vue";
 import Pagination from './components/Pagination.vue';
 
-let bd = "/products.json";
+let db = "/products.json";
 
 export default {
   name: "app",
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     getTableData: function(){
-    fetch(bd)
+    fetch(db)
       .then(response => {
         if (response.ok) {
           return response.json();

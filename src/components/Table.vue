@@ -3,13 +3,13 @@
     <table class="ui basic table">
       <thead>
         <tr>
-        <td v-for="title in tableTitles" @click="sortTable(title)" v-bind:key="title">
+        <td v-for="(title, index) in tableTitles" @click="sortTable(title)" :key="index">
           {{title}}
         </td>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in tableData" v-bind:key="item.id">
+        <tr v-for="item in tableData" :key="item.id">
           <td>{{item.id}}</td>
           <td>{{item.title}}</td>
           <td>{{item.price}}</td>
