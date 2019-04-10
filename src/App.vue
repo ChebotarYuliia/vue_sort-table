@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" class="logo">
-     <div v-if="!tableResponse" class="lds-circle">
-      <div></div>
-      </div>
-    <Table v-else v-bind:tableData="tableDataPage" v-on:to-sort-table="sortTableData"></Table>
-    <Pagination v-bind:tableData="tableDataResponse" v-on:change-page="changePage"></Pagination>
+     <div class="table-container">
+        <div v-if="!tableResponse" class="lds-circle">
+          <div></div>
+        </div>
+        <div v-else>
+          <Table  v-bind:tableData="tableDataPage" @to-sort-table="sortTableData"></Table>
+          <Pagination v-bind:tableData="tableDataResponse" @change-page="changePage"></Pagination>
+        </div>
+     </div>
   </div>
 </template>
 
@@ -63,6 +67,12 @@ export default {
   display: block;
   margin: 0 auto 10px;
   width: 100px;
+}
+.table-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
 }
 /* preloader */
 .lds-circle {

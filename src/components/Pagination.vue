@@ -28,7 +28,19 @@ export default {
       default: 10
     }
   },
+  created(){
+    this.pageCount();
+    this.changePage(this.paginatedData);
+  },
   computed: {
+    paginatedData() {
+      const start = this.pageNumber * this.size,
+        end = start + this.size,
+        paginatedData = this.tableData.slice(start, end);
+        return paginatedData;
+    }
+  },
+  methods: {
     pageCount() {
       if(this.tableData.length > 0){
         let l = this.tableData.length,
@@ -37,25 +49,16 @@ export default {
       }
       return alert('OMG it doest work')
     },
-    paginatedData() {
-      const start = this.pageNumber * this.size,
-        end = start + this.size,
-        paginatedData = this.tableData.slice(start, end);
-        this.changePage(paginatedData);
-        return paginatedData;
-    }
-  },
-  methods: {
     changePage(pages) {
       this.$emit("change-page", pages);
     },
     nextPage() {
       this.pageNumber++;
-      this.changePage(this.pageNumber);
+      this.changePage(this.paginatedData);
     },
     prevPage() {
       this.pageNumber--;
-      this.changePage(this.pageNumber);
+      this.changePage(this.paginatedData);
     }
   }
 };
