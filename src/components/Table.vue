@@ -3,7 +3,7 @@
     <table class="ui basic table">
       <thead>
         <tr>
-        <td v-for="(title, index) in tableTitles" @click="sortTable(title)" :key="index">
+        <td v-for="title in tableTitles" @click="sortTable(title)" :key="title">
           {{title}}
         </td>
         </tr>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-/* TODO: */
 
 export default {
   name: "Table",
@@ -41,15 +40,13 @@ export default {
 </script>
 
 <style>
-
-/* table styles */
-.table {
-  width: 600px;
-  margin: 0 auto;
-}
-.table thead td{
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
-}
+  .table {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .table thead td{
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+  }
 </style>
