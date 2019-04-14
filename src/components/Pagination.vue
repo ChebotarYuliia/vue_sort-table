@@ -1,10 +1,14 @@
 <template>
   <div class="pagination">
-   <!--<a v-for="n in pagesQuontity" :key="n" data-page="n" @click="changePage(n)"> {{n}}</a> -->
-     <div class="ui large buttons">
+    <!--<a v-for="n in pagesQuontity" :key="n" data-page="n" @click="changePage(n)"> {{n}}</a> -->
+    <div class="ui large buttons">
       <button class="ui button" @click="prevPage()" :disabled="currentPage === 0">Previous</button>
       <div class="or"></div>
-      <button class="ui button" @click="nextPage()" :disabled="currentPage === pageQuantity - 1">Next</button>
+      <button
+        class="ui button"
+        @click="nextPage()"
+        :disabled="currentPage === pageQuantity - 1"
+      >Next</button>
     </div>
   </div>
 </template>
@@ -27,17 +31,17 @@ export default {
       type: Number,
       required: true,
       default: 0
-    },
+    }
   },
   computed: {
     pageQuantity() {
-      if (this.tableItemsLength > 0){
+      if (this.tableItemsLength > 0) {
         let l = this.tableItemsLength,
           s = this.itemsPerPage;
         return Math.ceil(l / s);
       }
-      return alert('OMG it doest work')
-    },
+      return alert("OMG i can not calculate pages quantity");
+    }
   },
   methods: {
     changePage(page) {
@@ -54,9 +58,9 @@ export default {
 </script>
 
 <style>
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
 </style>
